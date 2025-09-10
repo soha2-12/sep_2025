@@ -1,0 +1,20 @@
+* * * * * * * * * 
+  * * * * * * * 
+    * * * * * 
+      * * * 
+        * 
+Code:
+n=5;
+for row in range(n):
+    for col in range(n-row):
+        print(col+1,end=" ")
+    print()
+for row in range(n):
+    #space
+    for col in range(row):
+        print(" ",end=" ")
+    #stars
+    for col in range(2*(n-row)-1):
+        print("*",end=" ")
+    print()
+print()
