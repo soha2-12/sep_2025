@@ -1,0 +1,23 @@
+#combination sum
+def generate(ind,subset,ans,cand,target):
+    if(target==0):
+        ans.append(subset.copy())
+        return
+    if(target<0):
+        return
+    if(ind==len(cand)):
+        return
+    subset.append(cand[ind])
+    generate(ind,subset,ans,cand,target-cand[ind])
+    subset.pop() 
+    generate(ind+1,subset,ans,cand,target)
+def combinationsum(cand,target):
+    ind=0
+    subset=[]
+    ans=[]
+    generate(ind,subset,ans,cand,target)
+    return ans
+cand=list(map(int,input().split()))
+target=int(input())
+
+print(combinationsum(cand,target))
