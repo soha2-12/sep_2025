@@ -1,0 +1,10 @@
+
+a, b = map(int, input("Enter two integers: ").split())
+print(f"Addition: {a} + {b} = {a + b}")
+print(f"Subtraction: {a} - {b} = {a - b}")
+print(f"Multiplication: {a} * {b} = {a * b}")
+if b != 0:
+    print(f"Division: {a} / {b} = {a // b}")  # integer division (like C)
+    print(f"Modulus: {a} % {b} = {a % b}")
+else:
+    print("Division and modulus not possible (division by zero).")
