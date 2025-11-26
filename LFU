@@ -1,0 +1,77 @@
+class LFUCache(object):
+
+    def __init__(self, capacity):
+        """
+        :type capacity: int
+        """
+        self.capacity = capacity
+        self.key_to_val = {}
+        self.key_to_freq = {}
+        self.freq_to_keys = {}
+        self.minfreq = 0
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        if key not in self.key_to_val:
+            return -1
+
+        freq = self.key_to_freq[key]
+
+        # remove from old freq bucket
+        del self.freq_to_keys[freq][key]
+
+        # if bucket empty, delete it
+        if not self.freq_to_keys[freq]:
+            del self.freq_to_keys[freq]
+            if self.minfreq == freq:
+                self.minfreq += 1
+
+        # add to new freq bucket
+        newfreq = freq + 1
+        self.key_to_freq[key] = newfreq
+
+        if newfreq not in self.freq_to_keys:
+            self.freq_to_keys[newfreq] = {}
+        self.freq_to_keys[newfreq][key] = None
+
+        return self.key_to_val[key]
+
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
+        if self.capacity == 0:
+            return
+
+        # key exists → update + increase freq
+        if key in self.key_to_val:
+            self.key_to_val[key] = value
+            self.get(key)   # reuse get() to update freq
+            return
+
+        # cache full → evict LFU
+        if len(self.key_to_val) >= self.capacity:
+            # get the least-frequent bucket
+            keys_dict = self.freq_to_keys[self.minfreq]
+            lfu_key = next(iter(keys_dict))   # first inserted
+            del keys_dict[lfu_key]
+
+            if not keys_dict:
+                del self.freq_to_keys[self.minfreq]
+
+            del self.key_to_val[lfu_key]
+            del self.key_to_freq[lfu_key]
+
+        # insert new key
+        self.key_to_val[key] = value
+        self.key_to_freq[key] = 1
+        self.minfreq = 1
+
+        if 1 not in self.freq_to_keys:
+            self.freq_to_keys[1] = {}
+        self.freq_to_keys[1][key] = None
