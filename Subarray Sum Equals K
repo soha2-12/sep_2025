@@ -1,0 +1,10 @@
+def subarraySum(nums, k):
+    count = 0
+    pref = 0
+    mp = {0: 1}
+    for n in nums:
+        pref += n
+        if pref - k in mp:
+            count += mp[pref - k]
+        mp[pref] = mp.get(pref, 0) + 1
+    return count
