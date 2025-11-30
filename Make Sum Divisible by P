@@ -1,0 +1,20 @@
+class Solution:
+    def minSubarray(self, nums: List[int], p: int) -> int:
+total = sum(nums)
+        need = total % p
+        if need == 0:
+            return 0
+
+        last = {0: -1}
+        cur = 0
+        ans = float('inf')
+        n = len(nums)
+
+        for i, val in enumerate(nums):
+            cur = (cur + val) % p
+            want = (cur - need) % p
+            if want in last:
+                ans = min(ans, i - last[want])
+            last[cur] = i
+
+        return ans if ans != float('inf') and ans < n else -1
