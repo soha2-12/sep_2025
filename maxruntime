@@ -1,0 +1,18 @@
+class Solution:
+    def maxRunTime(self, n: int, batteries: List[int]) -> int:
+        total = sum(batteries)
+        low, high = 0, total // n   # max possible minutes
+
+        while low < high:
+            mid = (low + high + 1) // 2
+            usable = 0
+
+            for b in batteries:
+                usable += min(b, mid)
+
+            if usable >= mid * n:
+                low = mid
+            else:
+                high = mid - 1
+
+        return low
