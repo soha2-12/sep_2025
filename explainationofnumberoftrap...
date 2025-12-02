@@ -1,0 +1,28 @@
+A horizontal trapezoid needs two horizontal parallel sides.
+
+This happens only when:
+
+You pick two points on one horizontal line (same y),
+
+And two points on another horizontal line (different y).
+
+So the problem becomes:
+
+Count how many points lie on each horizontal y-coordinate.
+
+For each y-level with k points, you can form
+C(k, 2) horizontal segments.
+
+A trapezoid is formed by choosing:
+
+one horizontal segment from some y₁, and
+
+one horizontal segment from a different y₂.
+
+So the final answer is:
+
+For every pair of y-levels:
+multiply the number of segments on y₁ with the number on y₂
+and add them up.
+
+That gives the total number of horizontal trapezoids.
