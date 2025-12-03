@@ -1,0 +1,54 @@
+class Solution(object):
+    def countTrapezoids(self, points):
+        def gcd(a,b):
+            while b:
+                a,b = b, a%b
+            return a
+
+        n = len(points)
+        slope_groups = {}
+        midpoint_dirs = {}
+        for i in range(n):
+            x1,y1 = points[i]
+            for j in range(i+1,n):
+                x2,y2 = points[j]
+                dx = x2 - x1
+                dy = y2 - y1
+                g = gcd(abs(dx), abs(dy))
+                dxn = dx//g
+                dyn = dy//g
+                if dxn < 0 or (dxn == 0 and dyn < 0):
+                    dxn, dyn = -dxn, -dyn
+                direction = (dxn, dyn)
+                A = dyn
+                B = -dxn
+                C = A*x1 + B*y1
+                if direction not in slope_groups:
+                    slope_groups[direction] = {}
+                slope_groups[direction][C] = slope_groups[direction].get(C, 0) + 1
+                mid = (x1 + x2, y1 + y2)
+                if mid not in midpoint_dirs:
+                    midpoint_dirs[mid] = {}
+                midpoint_dirs[mid][direction] = midpoint_dirs[mid].get(direction, 0) + 1
+
+        total_pairs = 0
+        for mp in slope_groups.values():
+            s = 0
+            sum_sq = 0
+            for v in mp.values():
+                s += v
+                sum_sq += v*v
+            total_pairs += (s*s - sum_sq)//2
+
+        parallelograms = 0
+        for dirs in midpoint_dirs.values():
+            tot = 0
+            for v in dirs.values():
+                tot += v
+            total_pairs_mid = tot*(tot-1)//2
+            collinear = 0
+            for v in dirs.values():
+                collinear += v*(v-1)//2
+            parallelograms += total_pairs_mid - collinear
+
+        return total_pairs - parallelograms
