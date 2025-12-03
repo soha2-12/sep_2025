@@ -1,0 +1,31 @@
+How the solution works 
+
+You’re given a bunch of points on a plane.
+A horizontal trapezoid is basically a 4-sided shape where at least one pair of opposite sides is horizontal — meaning those two sides lie on lines with the same y-value.
+
+So the idea is:
+
+Group points by their y-coordinate.
+All points on the same horizontal line could form the top or bottom of a trapezoid.
+
+For each horizontal line:
+
+Look at the x-positions of the points.
+
+Every pair of points on the same line can be one horizontal side of a trapezoid.
+
+Two different horizontal lines together make a trapezoid if they both have at least one pair.
+
+But here’s the trick:
+A trapezoid doesn’t care exactly where the points are — only that each line has a segment.
+So every pair of points on the same line generates a segment of length (x2 – x1).
+
+Then:
+
+For each y-level, compute all segment lengths.
+
+If one line has a segment of length L, and another line also has a segment of length L (same horizontal length), they can form a trapezoid.
+
+Count all such matching pairs across different y-levels.
+
+The fixed code carefully avoids double-counting and avoids counting degenerate (zero area) shapes.
