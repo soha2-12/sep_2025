@@ -1,0 +1,11 @@
+Cars at the very left going left ('L') will never meet anyone, so ignore them.
+
+Cars at the very right going right ('R') will also never meet anyone, so ignore them.
+
+Any car that is not in those ignored edges will eventually collide if it is moving.
+
+In the remaining middle part:
+
+Every 'L' or 'R' will end up hitting someone or something.
+
+Only 'S' (stationary) doesn’t add collisions itself.
