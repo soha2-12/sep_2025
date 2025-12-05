@@ -1,0 +1,16 @@
+Basically, you’re splitting the array into two parts at different positions.
+For each split, you look at the sum of the left side and the sum of the right side.
+The question wants the difference between these two sums to be even.
+
+Now here’s the easy trick:
+A difference is even only when both sums are either even or both are odd.
+So instead of actually checking the difference, you just check whether the left sum and right sum have the same “odd/even” nature.
+
+So you move through the array from the start, keep adding numbers to the left sum, and every time you do that, the right sum is just “total sum minus left sum”.
+At each point you simply check:
+
+Are both sums even?
+
+Or are both sums odd?
+
+If yes, then this split is valid.
