@@ -1,0 +1,41 @@
+class Solution:
+    def countPartitions(self, nums, k):
+        MOD = 10**9 + 7
+        n = len(nums)
+
+        from collections import deque
+        maxQ = deque()   # decreasing → front = max
+        minQ = deque()   # increasing → front = min
+
+        dp = [0] * (n + 1)
+        dp[0] = 1  # empty prefix = 1 way
+        prefix = [0] * (n + 1)  # prefix sum of dp
+        prefix[0] = 1
+
+        left = 0
+
+        for right in range(n):
+            # maintain max deque
+            while maxQ and maxQ[-1] < nums[right]:
+                maxQ.pop()
+            maxQ.append(nums[right])
+
+            # maintain min deque
+            while minQ and minQ[-1] > nums[right]:
+                minQ.pop()
+            minQ.append(nums[right])
+
+            # shrink window until max - min <= k
+            while maxQ[0] - minQ[0] > k:
+                if maxQ[0] == nums[left]:
+                    maxQ.popleft()
+                if minQ[0] == nums[left]:
+                    minQ.popleft()
+                left += 1
+
+            # number of ways = sum(dp[left .. right])
+            dp[right + 1] = (prefix[right] - prefix[left - 1]) % MOD if left > 0 else prefix[right]
+
+            prefix[right + 1] = (prefix[right] + dp[right + 1]) % MOD
+
+        return dp[n] % MOD
