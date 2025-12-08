@@ -1,0 +1,34 @@
+You are given a number n, and you need to count how many triples of numbers
+(a, b, c) exist such that:
+
+all three are between 1 and n
+
+and they satisfy the Pythagorean equation:
+
+a² + b² = c²
+
+This is exactly the same rule used for right-angled triangles.
+
+For example:
+
+3² + 4² = 5² → 9 + 16 = 25 ✔️
+
+So (3,4,5) is one valid triple.
+
+Also (4,3,5) is valid because order matters.
+
+So the job is basically:
+
+Try every possible a from 1 to n
+
+Try every possible b from 1 to n
+
+Compute a² + b²
+
+Check if this number is a perfect square (meaning there is a c whose square equals that number)
+
+Make sure that c ≤ n
+
+If yes → count it
+
+That's it.
