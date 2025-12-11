@@ -1,0 +1,31 @@
+Imagine a city laid out like a giant n × n grid.
+
+Some squares on this grid have buildings on them.
+Each building has coordinates like (x, y).
+
+Now a building is called covered if it is not lonely — it must have neighbors in all four straight directions:
+
+✔ Left
+
+Another building somewhere on the same row, but with a smaller y value.
+
+✔ Right
+
+Another building somewhere on the same row, but with a bigger y value.
+
+✔ Above
+
+Another building on the same column, but with a smaller x value.
+
+✔ Below
+
+Another building on the same column, but with a bigger x value.
+
+It does not matter how far away those buildings are — they can be touching or many cells away.
+As long as they are directly left/right/above/below in a straight line.
+
+Your job is simply:
+
+Count how many buildings have all four of these directions covered.
+
+If a building is missing even one direction, it isn’t counted.
