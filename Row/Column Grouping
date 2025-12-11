@@ -1,0 +1,42 @@
+from collections import defaultdict
+import bisect
+
+class Solution(object):
+    def countCoveredBuildings(self, n, buildings):
+        # map row -> sorted list of columns (y's)
+        row = defaultdict(list)
+        # map col -> sorted list of rows (x's)
+        col = defaultdict(list)
+        
+        # populate
+        for x, y in buildings:
+            x = int(x); y = int(y)
+            row[x].append(y)
+            col[y].append(x)
+        
+        # sort each list for binary search
+        for k in row:
+            row[k].sort()
+        for k in col:
+            col[k].sort()
+        
+        covered = 0
+        for x, y in buildings:
+            x = int(x); y = int(y)
+            ys = row[x]
+            xs = col[y]
+            
+            # position of y within sorted ys
+            i = bisect.bisect_left(ys, y)
+            has_left = (i > 0)
+            has_right = (i < len(ys) - 1)
+            
+            # position of x within sorted xs
+            j = bisect.bisect_left(xs, x)
+            has_above = (j > 0)
+            has_below = (j < len(xs) - 1)
+            
+            if has_left and has_right and has_above and has_below:
+                covered += 1
+        
+        return covered
