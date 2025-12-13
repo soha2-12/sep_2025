@@ -1,0 +1,38 @@
+You pick up one coupon at a time.
+
+First thing you check:
+👉 Is this coupon active?
+If it’s expired or turned off, you don’t even look at it again. Straight reject.
+
+Next, you look at where it belongs.
+The coupon must be for electronics, grocery, pharmacy, or restaurant.
+If it’s for anything else, you say: “Nope, we don’t accept this category.”
+
+Then you look at the coupon code itself.
+It should look clean and professional:
+
+Not empty
+
+No weird symbols
+
+Only letters, numbers, or _
+
+If the code looks messy or blank, you throw it away.
+
+Now, after checking all coupons, you’re left with only the good ones.
+
+But you’re not done yet.
+
+You arrange them nicely:
+
+First put electronics coupons
+
+Then grocery
+
+Then pharmacy
+
+Then restaurant
+
+Inside each group, you sort them alphabetically, like how names are arranged in a list.
+
+Finally, you write down only the coupon codes and hand over the list.
