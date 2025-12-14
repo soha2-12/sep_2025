@@ -1,0 +1,78 @@
+Imagine you’re walking down a long hallway.
+
+In this hallway, there are only:
+
+chairs (S)
+
+plants (P)
+
+There’s already a wall at the start and a wall at the end.
+You’re allowed to add more walls anywhere between two spots.
+
+Your job is to make rooms.
+
+But there’s one strict rule:
+
+👉 Every room must have exactly TWO chairs.
+Not one. Not three. Exactly two.
+
+Plants don’t matter. They’re just decoration.
+
+First reality check
+
+If the hallway has:
+
+no chairs, or
+
+an odd number of chairs
+
+then stop right there.
+
+There’s no way to split it correctly.
+
+Why?
+Because chairs must come in pairs.
+One lonely chair = one broken room.
+
+Now assume the chairs pair up nicely
+
+You start walking from left to right.
+
+The moment you see two chairs, that’s a ** room.
+
+Those two chairs belong together. They’re done.
+
+The next chair you see must belong to the next room.
+
+So the hallway naturally forms chunks of two chairs.
+
+So where does “multiple ways” come from?
+
+This is where the plants matter.
+
+Between two chair-pairs, there might be plants.
+
+Example:
+
+(chair chair) plant plant plant (chair chair)
+
+
+Those plants are empty space.
+
+You can put the wall:
+
+right after the chairs
+
+after the first plant
+
+after the second plant
+
+after the third plant
+
+Every one of those choices creates a different valid layout.
+
+More plants = more freedom.
+
+No plants?
+
+Then there’s only one obvious place to put the wall.
