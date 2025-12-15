@@ -1,0 +1,26 @@
+You are given a list of stock prices, where each number represents the price of a stock on a particular day. Your task is to count how many smooth descent periods exist in this price history.
+
+A smooth descent period is a group of consecutive days that follows one simple rule:
+starting from the second day of the period, the price must drop by exactly 1 compared to the previous day. The first day of the period has no restriction.
+
+An important point is that a single day by itself always counts as a smooth descent period. Even if the price goes up or stays the same afterward, that one day is still valid.
+
+What you are really doing is examining every possible continuous segment of the price list and checking whether it forms a perfect step-by-step downward pattern, decreasing by one each day.
+
+For example:
+
+[7] is valid (single day).
+
+[7,6] is valid because the price drops by exactly 1.
+
+[7,6,5] is also valid for the same reason.
+
+[7,5] is not valid because the drop is 2, not 1.
+
+[7,6,4] is not valid because the pattern breaks.
+
+[7,8] is not valid because the price increases.
+
+The challenge is not just to spot one descent, but to count all possible descent periods, including shorter ones that are part of longer sequences. For instance, in [5,4,3], you don’t just count the full three-day period—you also count [5], [4], [3], [5,4], and [4,3].
+
+So the problem is about recognizing consistent, exact downward steps in a sequence and counting every continuous way those steps can form valid periods.
