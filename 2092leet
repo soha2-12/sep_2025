@@ -1,0 +1,64 @@
+What the problem is really saying
+
+There are n people.
+Person 0 knows a secret and tells it to firstPerson at time 0.
+
+After that, people meet each other at specific times.
+If anyone in a meeting already knows the secret at that exact time, the secret is shared with the other person immediately.
+
+Important detail:
+If someone receives the secret at a time, they can pass it on in other meetings happening at the same time.
+
+The main challenge
+
+The tricky part is time.
+
+You cannot let the secret spread:
+
+backward in time
+
+or across meetings that happen at different times
+
+So sharing must happen:
+
+only among people connected by meetings at the same time
+
+and only if at least one of them already knows the secret
+
+How the solution thinks about it
+
+Sort all meetings by time
+This lets us process events in the exact order they happen.
+
+Handle one time block at a time
+If several meetings happen at the same time, treat them as one group.
+
+Inside one time block
+
+Imagine a temporary network of people meeting at that moment.
+
+Only people who already know the secret can start spreading it.
+
+The secret spreads freely inside this group because sharing is instantaneous.
+
+After finishing that time
+
+Everyone who learned the secret in that block keeps it forever.
+
+The temporary network is discarded.
+
+We move on to the next time.
+
+Repeat until all meetings are processed
+
+Why this works
+
+It respects time order
+
+It allows instant sharing at the same time
+
+It prevents leaks across unrelated meetings
+
+It correctly handles chains like:
+
+someone gets the secret → immediately passes it on → in another meeting at the same time
