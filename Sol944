@@ -1,0 +1,5 @@
+We look at the strings column by column instead of row by row.
+For each column, we compare the characters from the first string to the last string.
+If at any point the order breaks (a character comes before a smaller one alphabetically), that column cannot be kept.
+So we mark it for deletion and move to the next column.
+Finally, we return the number of columns that were not sorted
