@@ -1,0 +1,12 @@
+You compare the strings the same way humans compare words in a dictionary — from left to right. So you examine the columns one by one starting from the first.
+
+At each column, you only compare neighboring strings.
+
+If a column causes any string above to be alphabetically greater than the one below, that column must be deleted, because dictionary order is already broken and cannot be fixed later.
+
+If a column shows that one string is smaller than the next, that pair is now permanently sorted and never needs to be checked again.
+
+If letters are equal, the column doesn’t decide anything yet.
+
+You delete only the columns that break order and keep all others.
+The total number of deleted columns is the answer.
