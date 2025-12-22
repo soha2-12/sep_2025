@@ -1,0 +1,13 @@
+You have several strings of equal length. Each position across all strings is a column. You can delete any columns, but the same columns must be deleted from every string.
+
+Your goal is to delete the fewest columns so that each individual string becomes sorted from left to right (non-decreasing).
+
+The smart way to think is:
+👉 instead of choosing columns to delete, find the maximum number of columns you can keep in order.
+
+A column can come after another only if, for every row, its character is not smaller than the previous column’s character. If even one row breaks this, those columns can’t both stay.
+
+So you keep the longest possible sequence of such valid columns.
+Everything else must be deleted.
+
+Answer = total columns − columns kept.
