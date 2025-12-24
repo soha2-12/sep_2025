@@ -1,0 +1,8 @@
+You first count how many apples you have in total.
+Then you look at the boxes and think: to use the fewest boxes, I should always pick the biggest boxes first.
+
+So you sort the box capacities from largest to smallest and start filling them one by one. As you add each box, you keep track of how much total space you have so far. The moment this space becomes enough to hold all the apples, you stop.
+
+The number of boxes you used up to that point is the answer.
+
+In short: use the largest boxes first until their combined capacity can store all apples.
