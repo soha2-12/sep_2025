@@ -1,0 +1,22 @@
+Penalty increases with each pick
+Every time you pick a child, future picks become less valuable. So order matters a lot.
+
+Greedy thinking applies
+Since earlier picks suffer less penalty, you want the largest happiness values to be used earliest.
+
+Sort happiness in descending order
+This ensures:
+
+The happiest child gets picked when penalty is 0
+
+The next happiest when penalty is 1
+
+And so on…
+
+Apply the penalty while picking
+For the i-th child picked:
+
+Effective happiness = original happiness − i
+
+Ignore negative results
+If the penalty makes happiness ≤ 0, adding it would reduce the total, so you treat it as 0.
