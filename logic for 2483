@@ -1,0 +1,49 @@
+What the question is asking
+
+You are given a string of hours made of Y (customer comes) and N (no customer).
+
+You must choose one hour to close the shop.
+
+Your goal is to minimize penalty, not maximize profit.
+
+How penalty works
+
+Shop open + no customer (N) → penalty +1
+
+Shop closed + customer (Y) → penalty +1
+
+Choose the closing hour that gives the least total penalty.
+
+Key observation
+
+Every hour contributes either before closing or after closing — never both.
+
+So instead of checking every hour separately (slow), we slide the closing time once.
+
+Core logic (step-by-step)
+
+Start with the shop closed all day
+
+Penalty = total number of Y (all customers missed).
+
+Move closing time hour by hour from left to right.
+
+At each hour:
+
+If it’s Y → you now serve that customer → penalty − 1
+
+If it’s N → shop was open unnecessarily → penalty + 1
+
+Keep tracking the minimum penalty seen so far.
+
+The hour where penalty is minimum is the best closing time.
+
+Why this is efficient
+
+Only one pass through the string.
+
+No nested loops, no extra arrays.
+
+Time complexity: O(n)
+
+Space complexity: O(1)
