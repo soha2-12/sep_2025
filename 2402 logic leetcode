@@ -1,0 +1,78 @@
+Qustion:
+You are managing n meeting rooms, each with a unique number starting from 0.
+You are also given a list of meetings, each with a start time and end time.
+
+Your job is to:
+
+Assign every meeting to one room
+
+Always follow strict rules while assigning rooms
+
+Finally, figure out which room was used the most
+
+-> Rules you must follow
+
+Meetings are handled in time order
+Earlier meetings must be scheduled before later ones.
+
+If a room is free at the meeting’s start time
+→ assign the meeting to the lowest-numbered available room.
+
+If all rooms are busy
+→ the meeting must wait until the earliest room becomes free
+→ once free, the meeting starts immediately and keeps its original duration.
+
+Track usage
+→ count how many meetings each room handles.
+
+Final answer
+→ return the room with the maximum number of meetings
+→ if there’s a tie, choose the room with the smaller number.
+
+--> How to think about the logic (intuitively)
+
+Imagine two lists in your head:
+
+1️1  Free rooms
+
+Rooms that are currently empty
+
+Always pick the smallest room number first
+
+2️2 Busy rooms
+
+Rooms that are occupied
+
+You care about which room finishes earliest
+
+33 What happens for each meeting
+
+First, free up rooms whose meetings have already ended.
+
+Then:
+
+If at least one room is free
+→ assign the meeting immediately.
+
+If no room is free
+→ delay the meeting until the earliest room finishes.
+
+Every time a room is used, increase its count.
+
+This guarantees:
+
+Fair room usage
+
+Correct handling of delays
+
+Exact tracking of room popularity
+
+--> Final outcome
+
+After all meetings are scheduled:
+
+Look at how many meetings each room handled
+
+Return the room with the highest count
+
+If counts match, the smaller room number wins
