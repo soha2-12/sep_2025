@@ -1,0 +1,18 @@
+The logic is to take advantage of the fact that the matrix is already sorted in 
+decreasing order both row-wise and column-wise. 
+We start from the bottom-left corner of the
+matrix because this position helps us decid
+quickly whether to move right or up. If the 
+current number is negative, then all the numbers 
+to its right in the same row will also be
+negative, since the row is sorted.
+So we count all those negative numbers
+at once and move one row up. If the 
+current number is not negative, then all
+the numbers above it in the same column
+will also be non-negative, so we mov
+right to search for negative values.
+By repeating this process until we go 
+out of bounds, we count all negative
+numbers without checking every element,
+making the solution efficient.
