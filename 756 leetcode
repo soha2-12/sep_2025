@@ -1,0 +1,40 @@
+class Solution(object):
+    def pyramidTransition(self, bottom, allowed):
+        # Create a mapping from pair to possible top letters
+        allowed_dict = {}
+        for triple in allowed:
+            pair = triple[:2]
+            if pair not in allowed_dict:
+                allowed_dict[pair] = []
+            allowed_dict[pair].append(triple[2])
+        
+        # Helper function: DFS to build pyramid
+        def can_build(current):
+            if len(current) == 1:
+                return True  # reached the top
+            # Generate all possible next rows
+            next_rows = ['']
+            for i in range(len(current) - 1):
+                pair = current[i:i+2]
+                if pair not in allowed_dict:
+                    return False
+                possible = allowed_dict[pair]
+                temp = []
+                for row in next_rows:
+                    for p in possible:
+                        temp.append(row + p)
+                next_rows = temp
+            # Recursively check all possible next rows
+            for row in next_rows:
+                if can_build(row):
+                    return True
+            return False
+        
+        return can_build(bottom)
+
+
+# Example usage
+sol = Solution()
+bottom = "XYZ"
+allowed = ["XYA", "YZA", "XYY", "YZX", "ZXX"]
+print(sol.pyramidTransition(bottom, allowed))  # Output: True or False
