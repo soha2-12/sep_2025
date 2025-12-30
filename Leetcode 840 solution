@@ -1,0 +1,42 @@
+class Solution(object):
+    def numMagicSquaresInside(self, grid):
+        if not grid or not grid[0]:
+            return 0
+        
+        rows = len(grid)
+        cols = len(grid[0])
+        count = 0
+        
+        for i in range(rows - 2):
+            for j in range(cols - 2):
+                if self.isMagic(grid, i, j):
+                    count += 1
+        
+        return count
+    
+    def isMagic(self, grid, r, c):
+        nums = set()
+        
+        for i in range(r, r + 3):
+            for j in range(c, c + 3):
+                if grid[i][j] < 1 or grid[i][j] > 9:
+                    return False
+                nums.add(grid[i][j])
+        
+        if len(nums) != 9:
+            return False
+        
+        s = 15
+        
+        for i in range(3):
+            if grid[r+i][c] + grid[r+i][c+1] + grid[r+i][c+2] != s:
+                return False
+            if grid[r][c+i] + grid[r+1][c+i] + grid[r+2][c+i] != s:
+                return False
+        
+        if grid[r][c] + grid[r+1][c+1] + grid[r+2][c+2] != s:
+            return False
+        if grid[r][c+2] + grid[r+1][c+1] + grid[r+2][c] != s:
+            return False
+        
+        return True
